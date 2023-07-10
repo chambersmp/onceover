@@ -14,16 +14,25 @@ module Onceover::Logger
           :fatal => [:white, :on_red]
         }
       )
-
-      Logging.appenders.stdout(
-        'stdout',
-        :layout => Logging.layouts.pattern(
-          :pattern      => '%l\t -> %m\n',
-          :color_scheme => 'bright'
+      if opts[:no_color]
+        Logging.appenders.stdout(
+          'stdout',
+          :layout => Logging.layouts.pattern(
+            :pattern      => '%l\t -> %m\n',
+          # :color_scheme => 'bright'
+          )
         )
-      )
-
-      $logger = Logging.logger['Colors']
+      else
+        Logging.appenders.stdout(
+          'stdout',
+          :layout => Logging.layouts.pattern(
+            :pattern      => '%l\t -> %m\n',
+            :color_scheme => 'bright'
+          )
+        )
+      end
+    
+      $logger = Logging.logger['Nocolors']
       $logger.add_appenders 'stdout'
       $logger.level = :info
     end

@@ -19,6 +19,7 @@ This will run the full set of spec or acceptance tests.
 This includes deploying using r10k and running all custom tests.
           DESCRIPTION
 
+          flag nil, :no_color, 'Disable color for logging'
           optional :t,  :tags,             'A list of tags. Only tests with these tags will be run'
           optional :c,  :classes,          'A list of classes. Only tests with these classes will be run'
           optional :n,  :nodes,            'A list of nodes. Only tests with these nodes will be run'
